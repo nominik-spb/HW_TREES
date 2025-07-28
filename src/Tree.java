@@ -49,10 +49,30 @@ public class Tree {
 
     // Раскомментируйте и реализуйте этот метод
     public boolean isNamePyramid() {
-
-        
-        return true;
         // ВАШ КОД
+        boolean result = true;
+        String parent = getName();
+        Tree leftChild = getLeft();
+        Tree rightChild = getRight();
+
+        if (leftChild != null) {
+            if (parent.length() <= leftChild.getName().length()) {
+                //System.out.println(getName()+"<="+leftChild.getName());
+                result = leftChild.isNamePyramid();
+            } else {
+                result = false;
+            }
+        }
+
+        if (rightChild != null) {
+            if (parent.length() <= rightChild.getName().length()) {
+                //System.out.println(getName()+"<="+rightChild.getName());
+                result = rightChild.isNamePyramid();
+            } else {
+                result = false;
+            }
+        }
+        return result;
     }
 
     @Override
